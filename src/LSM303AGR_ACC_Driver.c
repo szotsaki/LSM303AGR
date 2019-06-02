@@ -36,6 +36,8 @@
  */
 
 /* Includes ------------------------------------------------------------------*/
+#include <string.h>
+
 #include "LSM303AGR_ACC_Driver.h"
 
 /* Imported function prototypes ----------------------------------------------*/
@@ -139,7 +141,8 @@ mems_status_t LSM303AGR_ACC_R_x_data_avail(void *handle, LSM303AGR_ACC_1DA_t *va
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG_AUX, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_1DA_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_1DA_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -156,7 +159,8 @@ mems_status_t LSM303AGR_ACC_R_y_data_avail(void *handle, LSM303AGR_ACC_2DA__t *v
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG_AUX, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_2DA__MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_2DA__MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -173,7 +177,8 @@ mems_status_t LSM303AGR_ACC_R_z_data_avail(void *handle, LSM303AGR_ACC_3DA__t *v
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG_AUX, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_3DA__MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_3DA__MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -190,7 +195,8 @@ mems_status_t LSM303AGR_ACC_R_xyz_data_avail(void *handle, LSM303AGR_ACC_321DA__
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG_AUX, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_321DA__MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_321DA__MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -207,7 +213,8 @@ mems_status_t LSM303AGR_ACC_R_DataXOverrun(void *handle, LSM303AGR_ACC_1OR__t *v
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG_AUX, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_1OR__MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_1OR__MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -224,7 +231,8 @@ mems_status_t LSM303AGR_ACC_R_DataYOverrun(void *handle, LSM303AGR_ACC_2OR__t *v
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG_AUX, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_2OR__MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_2OR__MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -241,7 +249,8 @@ mems_status_t LSM303AGR_ACC_R_DataZOverrun(void *handle, LSM303AGR_ACC_3OR__t *v
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG_AUX, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_3OR__MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_3OR__MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -258,7 +267,8 @@ mems_status_t LSM303AGR_ACC_R_DataXYZOverrun(void *handle, LSM303AGR_ACC_321OR__
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG_AUX, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_321OR__MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_321OR__MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -334,7 +344,8 @@ mems_status_t LSM303AGR_ACC_R_TEMP_EN_bits(void *handle, LSM303AGR_ACC_TEMP_EN_t
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_TEMP_CFG_REG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_TEMP_EN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_TEMP_EN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -374,7 +385,8 @@ mems_status_t LSM303AGR_ACC_R_ADC_PD(void *handle, LSM303AGR_ACC_ADC_PD_t *value
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_TEMP_CFG_REG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ADC_PD_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ADC_PD_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -414,7 +426,8 @@ mems_status_t LSM303AGR_ACC_R_XEN(void *handle, LSM303AGR_ACC_XEN_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG1, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XEN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XEN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -454,7 +467,8 @@ mems_status_t LSM303AGR_ACC_R_YEN(void *handle, LSM303AGR_ACC_YEN_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG1, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YEN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YEN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -494,7 +508,8 @@ mems_status_t LSM303AGR_ACC_R_ZEN(void *handle, LSM303AGR_ACC_ZEN_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG1, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZEN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZEN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -534,7 +549,8 @@ mems_status_t LSM303AGR_ACC_R_LOWPWR_EN(void *handle, LSM303AGR_ACC_LPEN_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG1, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_LPEN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_LPEN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -574,7 +590,8 @@ mems_status_t LSM303AGR_ACC_R_ODR(void *handle, LSM303AGR_ACC_ODR_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG1, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ODR_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ODR_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -614,7 +631,8 @@ mems_status_t LSM303AGR_ACC_R_hpf_aoi_en_int1(void *handle, LSM303AGR_ACC_HPIS1_
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_HPIS1_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_HPIS1_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -654,7 +672,8 @@ mems_status_t LSM303AGR_ACC_R_hpf_aoi_en_int2(void *handle, LSM303AGR_ACC_HPIS2_
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_HPIS2_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_HPIS2_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -694,7 +713,8 @@ mems_status_t LSM303AGR_ACC_R_hpf_click_en(void *handle, LSM303AGR_ACC_HPCLICK_t
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_HPCLICK_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_HPCLICK_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -734,7 +754,8 @@ mems_status_t LSM303AGR_ACC_R_Data_Filter(void *handle, LSM303AGR_ACC_FDS_t *val
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_FDS_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_FDS_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -774,7 +795,8 @@ mems_status_t LSM303AGR_ACC_R_hpf_cutoff_freq(void *handle, LSM303AGR_ACC_HPCF_t
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_HPCF_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_HPCF_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -814,7 +836,8 @@ mems_status_t LSM303AGR_ACC_R_hpf_mode(void *handle, LSM303AGR_ACC_HPM_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_HPM_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_HPM_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -854,7 +877,8 @@ mems_status_t LSM303AGR_ACC_R_FIFO_Overrun_on_INT1(void *handle, LSM303AGR_ACC_I
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG3, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I1_OVERRUN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I1_OVERRUN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -894,7 +918,8 @@ mems_status_t LSM303AGR_ACC_R_FIFO_Watermark_on_INT1(void *handle, LSM303AGR_ACC
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG3, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I1_WTM_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I1_WTM_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -934,7 +959,8 @@ mems_status_t LSM303AGR_ACC_R_FIFO_DRDY2_on_INT1(void *handle, LSM303AGR_ACC_I1_
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG3, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I1_DRDY2_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I1_DRDY2_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -974,7 +1000,8 @@ mems_status_t LSM303AGR_ACC_R_FIFO_DRDY1_on_INT1(void *handle, LSM303AGR_ACC_I1_
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG3, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I1_DRDY1_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I1_DRDY1_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1014,7 +1041,8 @@ mems_status_t LSM303AGR_ACC_R_FIFO_AOL2_on_INT1(void *handle, LSM303AGR_ACC_I1_A
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG3, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I1_AOI2_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I1_AOI2_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1054,7 +1082,8 @@ mems_status_t LSM303AGR_ACC_R_FIFO_AOL1_on_INT1(void *handle, LSM303AGR_ACC_I1_A
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG3, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I1_AOI1_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I1_AOI1_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1094,7 +1123,8 @@ mems_status_t LSM303AGR_ACC_R_FIFO_Click_on_INT1(void *handle, LSM303AGR_ACC_I1_
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG3, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I1_CLICK_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I1_CLICK_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1134,7 +1164,8 @@ mems_status_t LSM303AGR_ACC_R_SPI_mode(void *handle, LSM303AGR_ACC_SIM_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG4, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_SIM_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_SIM_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1174,7 +1205,8 @@ mems_status_t LSM303AGR_ACC_R_SelfTest(void *handle, LSM303AGR_ACC_ST_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG4, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ST_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ST_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1214,7 +1246,8 @@ mems_status_t LSM303AGR_ACC_R_HiRes(void *handle, LSM303AGR_ACC_HR_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG4, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_HR_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_HR_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1254,7 +1287,8 @@ mems_status_t LSM303AGR_ACC_R_FullScale(void *handle, LSM303AGR_ACC_FS_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG4, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_FS_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_FS_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1294,7 +1328,8 @@ mems_status_t LSM303AGR_ACC_R_LittleBigEndian(void *handle, LSM303AGR_ACC_BLE_t 
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG4, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_BLE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_BLE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1334,7 +1369,8 @@ mems_status_t LSM303AGR_ACC_R_BlockDataUpdate(void *handle, LSM303AGR_ACC_BDU_t 
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG4, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_BDU_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_BDU_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1374,7 +1410,8 @@ mems_status_t LSM303AGR_ACC_R_4D_on_INT2(void *handle, LSM303AGR_ACC_D4D_INT2_t 
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG5, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_D4D_INT2_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_D4D_INT2_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1414,7 +1451,8 @@ mems_status_t LSM303AGR_ACC_R_LatchInterrupt_on_INT2(void *handle, LSM303AGR_ACC
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG5, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_LIR_INT2_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_LIR_INT2_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1455,7 +1493,8 @@ mems_status_t LSM303AGR_ACC_R_4D_on_INT1(void *handle, LSM303AGR_ACC_D4D_INT1_t 
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG5, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_D4D_INT1_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_D4D_INT1_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1495,7 +1534,8 @@ mems_status_t LSM303AGR_ACC_R_LatchInterrupt_on_INT1(void *handle, LSM303AGR_ACC
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG5, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_LIR_INT1_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_LIR_INT1_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1536,7 +1576,8 @@ mems_status_t LSM303AGR_ACC_R_FIFO_EN(void *handle, LSM303AGR_ACC_FIFO_EN_t *val
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG5, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_FIFO_EN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_FIFO_EN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1576,7 +1617,8 @@ mems_status_t LSM303AGR_ACC_R_RebootMemory(void *handle, LSM303AGR_ACC_BOOT_t *v
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG5, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_BOOT_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_BOOT_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1616,7 +1658,8 @@ mems_status_t LSM303AGR_ACC_R_IntActive(void *handle, LSM303AGR_ACC_H_LACTIVE_t 
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG6, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_H_LACTIVE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_H_LACTIVE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1657,7 +1700,8 @@ mems_status_t LSM303AGR_ACC_R_P2_ACT(void *handle, LSM303AGR_ACC_P2_ACT_t *value
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG6, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_P2_ACT_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_P2_ACT_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1698,7 +1742,8 @@ mems_status_t LSM303AGR_ACC_R_Boot_on_INT2(void *handle, LSM303AGR_ACC_BOOT_I1_t
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG6, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_BOOT_I1_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_BOOT_I1_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1738,7 +1783,8 @@ mems_status_t LSM303AGR_ACC_R_I2_on_INT2(void *handle, LSM303AGR_ACC_I2_INT2_t *
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG6, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I2_INT2_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I2_INT2_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1778,7 +1824,8 @@ mems_status_t LSM303AGR_ACC_R_I2_on_INT1(void *handle, LSM303AGR_ACC_I2_INT1_t *
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG6, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I2_INT1_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I2_INT1_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1818,7 +1865,8 @@ mems_status_t LSM303AGR_ACC_R_Click_on_INT2(void *handle, LSM303AGR_ACC_I2_CLICK
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CTRL_REG6, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_I2_CLICKEN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_I2_CLICKEN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1879,7 +1927,8 @@ mems_status_t LSM303AGR_ACC_R_XDataAvail(void *handle, LSM303AGR_ACC_XDA_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XDA_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XDA_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1896,7 +1945,8 @@ mems_status_t LSM303AGR_ACC_R_YDataAvail(void *handle, LSM303AGR_ACC_YDA_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YDA_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YDA_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1913,7 +1963,8 @@ mems_status_t LSM303AGR_ACC_R_ZDataAvail(void *handle, LSM303AGR_ACC_ZDA_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZDA_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZDA_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1930,7 +1981,8 @@ mems_status_t LSM303AGR_ACC_R_XYZDataAvail(void *handle, LSM303AGR_ACC_ZYXDA_t *
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZYXDA_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZYXDA_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1947,7 +1999,8 @@ mems_status_t LSM303AGR_ACC_R_XDataOverrun(void *handle, LSM303AGR_ACC_XOR_t *va
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XOR_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XOR_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1964,7 +2017,8 @@ mems_status_t LSM303AGR_ACC_R_YDataOverrun(void *handle, LSM303AGR_ACC_YOR_t *va
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YOR_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YOR_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1981,7 +2035,8 @@ mems_status_t LSM303AGR_ACC_R_ZDataOverrun(void *handle, LSM303AGR_ACC_ZOR_t *va
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZOR_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZOR_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -1998,7 +2053,8 @@ mems_status_t LSM303AGR_ACC_R_XYZDataOverrun(void *handle, LSM303AGR_ACC_ZYXOR_t
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_STATUS_REG2, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZYXOR_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZYXOR_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2082,7 +2138,8 @@ mems_status_t LSM303AGR_ACC_R_TriggerSel(void *handle, LSM303AGR_ACC_TR_t *value
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_FIFO_CTRL_REG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_TR_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_TR_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2122,7 +2179,8 @@ mems_status_t LSM303AGR_ACC_R_FifoMode(void *handle, LSM303AGR_ACC_FM_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_FIFO_CTRL_REG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_FM_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_FM_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2157,7 +2215,8 @@ mems_status_t LSM303AGR_ACC_R_FifoEmpty(void *handle, LSM303AGR_ACC_EMPTY_t *val
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_FIFO_SRC_REG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_EMPTY_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_EMPTY_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2174,7 +2233,8 @@ mems_status_t LSM303AGR_ACC_R_FifoOverrun(void *handle, LSM303AGR_ACC_OVRN_FIFO_
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_FIFO_SRC_REG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_OVRN_FIFO_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_OVRN_FIFO_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2191,7 +2251,8 @@ mems_status_t LSM303AGR_ACC_R_WatermarkLevel(void *handle, LSM303AGR_ACC_WTM_t *
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_FIFO_SRC_REG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_WTM_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_WTM_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2231,7 +2292,8 @@ mems_status_t LSM303AGR_ACC_R_Int1EnXLo(void *handle, LSM303AGR_ACC_XLIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XLIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XLIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2271,7 +2333,8 @@ mems_status_t LSM303AGR_ACC_R_Int1EnXHi(void *handle, LSM303AGR_ACC_XHIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XHIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XHIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2311,7 +2374,8 @@ mems_status_t LSM303AGR_ACC_R_Int1EnYLo(void *handle, LSM303AGR_ACC_YLIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YLIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YLIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2351,7 +2415,8 @@ mems_status_t LSM303AGR_ACC_R_Int1EnYHi(void *handle, LSM303AGR_ACC_YHIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YHIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YHIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2391,7 +2456,8 @@ mems_status_t LSM303AGR_ACC_R_Int1EnZLo(void *handle, LSM303AGR_ACC_ZLIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZLIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZLIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2431,7 +2497,8 @@ mems_status_t LSM303AGR_ACC_R_Int1EnZHi(void *handle, LSM303AGR_ACC_ZHIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZHIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZHIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2471,7 +2538,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_6D(void *handle, LSM303AGR_ACC_6D_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_6D_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_6D_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2511,7 +2579,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_AOI(void *handle, LSM303AGR_ACC_AOI_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_AOI_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_AOI_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2551,7 +2620,8 @@ mems_status_t LSM303AGR_ACC_R_Int2EnXLo(void *handle, LSM303AGR_ACC_XLIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XLIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XLIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2591,7 +2661,8 @@ mems_status_t LSM303AGR_ACC_R_Int2EnXHi(void *handle, LSM303AGR_ACC_XHIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XHIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XHIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2631,7 +2702,8 @@ mems_status_t LSM303AGR_ACC_R_Int2EnYLo(void *handle, LSM303AGR_ACC_YLIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YLIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YLIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2671,7 +2743,8 @@ mems_status_t LSM303AGR_ACC_R_Int2EnYHi(void *handle, LSM303AGR_ACC_YHIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YHIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YHIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2711,7 +2784,8 @@ mems_status_t LSM303AGR_ACC_R_Int2EnZLo(void *handle, LSM303AGR_ACC_ZLIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZLIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZLIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2751,7 +2825,8 @@ mems_status_t LSM303AGR_ACC_R_Int2EnZHi(void *handle, LSM303AGR_ACC_ZHIE_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZHIE_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZHIE_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2791,7 +2866,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_6D(void *handle, LSM303AGR_ACC_6D_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_6D_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_6D_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2831,7 +2907,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_AOI(void *handle, LSM303AGR_ACC_AOI_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_AOI_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_AOI_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2849,7 +2926,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_Xlo(void *handle, LSM303AGR_ACC_XL_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XL_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XL_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2866,7 +2944,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_XHi(void *handle, LSM303AGR_ACC_XH_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XH_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XH_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2883,7 +2962,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_YLo(void *handle, LSM303AGR_ACC_YL_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YL_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YL_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2900,7 +2980,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_YHi(void *handle, LSM303AGR_ACC_YH_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YH_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YH_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2917,7 +2998,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_Zlo(void *handle, LSM303AGR_ACC_ZL_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZL_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZL_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2934,7 +3016,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_ZHi(void *handle, LSM303AGR_ACC_ZH_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZH_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZH_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2951,7 +3034,8 @@ mems_status_t LSM303AGR_ACC_R_Int1_IA(void *handle, LSM303AGR_ACC_IA_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT1_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_IA_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_IA_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2969,7 +3053,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_Xlo(void *handle, LSM303AGR_ACC_XL_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XL_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XL_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -2986,7 +3071,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_XHi(void *handle, LSM303AGR_ACC_XH_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XH_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XH_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3003,7 +3089,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_YLo(void *handle, LSM303AGR_ACC_YL_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YL_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YL_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3020,7 +3107,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_YHi(void *handle, LSM303AGR_ACC_YH_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YH_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YH_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3037,7 +3125,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_Zlo(void *handle, LSM303AGR_ACC_ZL_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZL_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZL_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3054,7 +3143,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_ZHi(void *handle, LSM303AGR_ACC_ZH_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZH_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZH_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3071,7 +3161,8 @@ mems_status_t LSM303AGR_ACC_R_Int2_IA(void *handle, LSM303AGR_ACC_IA_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_INT2_SOURCE, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_IA_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_IA_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3292,7 +3383,8 @@ mems_status_t LSM303AGR_ACC_R_XSingle(void *handle, LSM303AGR_ACC_XS_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XS_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XS_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3332,7 +3424,8 @@ mems_status_t LSM303AGR_ACC_R_XDouble(void *handle, LSM303AGR_ACC_XD_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_XD_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_XD_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3372,7 +3465,8 @@ mems_status_t LSM303AGR_ACC_R_YSingle(void *handle, LSM303AGR_ACC_YS_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YS_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YS_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3412,7 +3506,8 @@ mems_status_t LSM303AGR_ACC_R_YDouble(void *handle, LSM303AGR_ACC_YD_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_YD_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_YD_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3452,7 +3547,8 @@ mems_status_t LSM303AGR_ACC_R_ZSingle(void *handle, LSM303AGR_ACC_ZS_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZS_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZS_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3492,7 +3588,8 @@ mems_status_t LSM303AGR_ACC_R_ZDouble(void *handle, LSM303AGR_ACC_ZD_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_CFG, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_ZD_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_ZD_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3509,7 +3606,8 @@ mems_status_t LSM303AGR_ACC_R_ClickX(void *handle, LSM303AGR_ACC_X_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_SRC, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_X_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_X_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3526,7 +3624,8 @@ mems_status_t LSM303AGR_ACC_R_ClickY(void *handle, LSM303AGR_ACC_Y_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_SRC, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_Y_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_Y_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3543,7 +3642,8 @@ mems_status_t LSM303AGR_ACC_R_ClickZ(void *handle, LSM303AGR_ACC_Z_t *value)
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_SRC, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_Z_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_Z_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3560,7 +3660,8 @@ mems_status_t LSM303AGR_ACC_R_ClickSign(void *handle, LSM303AGR_ACC_SIGN_t *valu
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_SRC, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_SIGN_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_SIGN_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3577,7 +3678,8 @@ mems_status_t LSM303AGR_ACC_R_SingleCLICK(void *handle, LSM303AGR_ACC_SCLICK_t *
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_SRC, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_SCLICK_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_SCLICK_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3594,7 +3696,8 @@ mems_status_t LSM303AGR_ACC_R_DoubleCLICK(void *handle, LSM303AGR_ACC_DCLICK_t *
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_SRC, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_DCLICK_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_DCLICK_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
@@ -3611,7 +3714,8 @@ mems_status_t LSM303AGR_ACC_R_CLICK_IA(void *handle, LSM303AGR_ACC_CLICK_IA_t *v
  if( !LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_CLICK_SRC, (u8_t *)value) )
     return MEMS_ERROR;
 
-  *value &= LSM303AGR_ACC_IA_MASK; //mask
+  const u8_t tmp = *value & LSM303AGR_ACC_IA_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
 
   return MEMS_SUCCESS;
 }
