@@ -66,7 +66,7 @@ typedef signed char i8_t;
 typedef union{
 	i16_t i16bit[3];
 	u8_t u8bit[6];
-} Type3Axis16bit_U;	
+} Type3Axis16bit_U;
 
 typedef union{
 	i16_t i16bit;
@@ -80,7 +80,7 @@ typedef union{
 
 typedef enum {
   MEMS_SUCCESS = 0x01,
-  MEMS_ERROR   = 0x00	
+  MEMS_ERROR   = 0x00
 } mems_status_t;
 
 #endif /*__SHARED__TYPES*/
@@ -98,13 +98,13 @@ typedef enum {
 #define LSM303AGR_MAG_WHO_AM_I         0x40
 
 /* Private Function Prototype -------------------------------------------------------*/
- 
+
 void LSM303AGR_MAG_SwapHighLowByte(u8_t *bufferToSwap, u8_t numberOfByte, u8_t dimension);
 
 /* Public Function Prototypes -------------------------------------------------------*/
 
 mems_status_t LSM303AGR_MAG_ReadReg( void *handle, u8_t Reg, u8_t* Data );
-mems_status_t LSM303AGR_MAG_WriteReg( void *handle, u8_t Reg, u8_t Data ); 
+mems_status_t LSM303AGR_MAG_WriteReg( void *handle, u8_t Reg, u8_t Data );
 
 
 /************** Device Register  *******************/
@@ -742,7 +742,7 @@ mems_status_t LSM303AGR_MAG_R_ZYXOR(void *handle, LSM303AGR_MAG_ZYXOR_t *value);
 /*******************************************************************************
 * Register      : <REGISTER_L> - <REGISTER_H>
 * Output Type   : Magnetic
-* Permission    : ro 
+* Permission    : ro
 *******************************************************************************/
 mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, u8_t *buff);
 mems_status_t LSM303AGR_MAG_Get_Magnetic(void *handle, int *buff);
@@ -750,9 +750,9 @@ mems_status_t LSM303AGR_MAG_Get_Magnetic(void *handle, int *buff);
 /*******************************************************************************
 * Register      : <REGISTER_L> - <REGISTER_H>
 * Output Type   : IntThreshld
-* Permission    : rw 
+* Permission    : rw
 *******************************************************************************/
-mems_status_t LSM303AGR_MAG_Get_IntThreshld(void *handle, u8_t *buff); 
+mems_status_t LSM303AGR_MAG_Get_IntThreshld(void *handle, u8_t *buff);
 mems_status_t LSM303AGR_MAG_Set_IntThreshld(void *handle, u8_t *buff);
 
 #endif

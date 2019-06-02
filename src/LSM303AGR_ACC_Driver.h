@@ -66,7 +66,7 @@ typedef signed char i8_t;
 typedef union{
 	i16_t i16bit[3];
 	u8_t u8bit[6];
-} Type3Axis16bit_U;	
+} Type3Axis16bit_U;
 
 typedef union{
 	i16_t i16bit;
@@ -80,7 +80,7 @@ typedef union{
 
 typedef enum {
   MEMS_SUCCESS = 0x01,
-  MEMS_ERROR   = 0x00	
+  MEMS_ERROR   = 0x00
 } mems_status_t;
 
 #endif /*__SHARED__TYPES*/
@@ -104,7 +104,7 @@ void LSM303AGR_ACC_SwapHighLowByte(u8_t *bufferToSwap, u8_t numberOfByte, u8_t d
 /* Public Function Prototypes ------------------------------------------------*/
 
 mems_status_t LSM303AGR_ACC_ReadReg( void *handle, u8_t Reg, u8_t* Data );
-mems_status_t LSM303AGR_ACC_WriteReg( void *handle, u8_t Reg, u8_t Data ); 
+mems_status_t LSM303AGR_ACC_WriteReg( void *handle, u8_t Reg, u8_t Data );
 
 
 /************** Device Register  *******************/
@@ -1586,15 +1586,15 @@ mems_status_t LSM303AGR_ACC_R_ClickTimeWindow(void *handle, u8_t *value);
 /*******************************************************************************
 * Register      : <REGISTER_L> - <REGISTER_H>
 * Output Type   : Voltage_ADC
-* Permission    : RO 
+* Permission    : RO
 *******************************************************************************/
-mems_status_t LSM303AGR_ACC_Get_Voltage_ADC(void *handle, u8_t *buff); 
+mems_status_t LSM303AGR_ACC_Get_Voltage_ADC(void *handle, u8_t *buff);
 /*******************************************************************************
 * Register      : <REGISTER_L> - <REGISTER_H>
 * Output Type   : Acceleration
-* Permission    : RO 
+* Permission    : RO
 *******************************************************************************/
-mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, u8_t *buff); 
+mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, u8_t *buff);
 mems_status_t LSM303AGR_ACC_Get_Acceleration(void *handle, int *buff);
 
 #endif
