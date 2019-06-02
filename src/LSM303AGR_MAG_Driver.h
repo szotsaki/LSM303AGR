@@ -277,6 +277,36 @@ mems_status_t  LSM303AGR_MAG_W_SOFT_RST(void *handle, LSM303AGR_MAG_SOFT_RST_t n
 mems_status_t LSM303AGR_MAG_R_SOFT_RST(void *handle, LSM303AGR_MAG_SOFT_RST_t *value);
 
 /*******************************************************************************
+* Register      : CFG_REG_A
+* Address       : 0X60
+* Bit Group Name: REBOOT
+* Permission    : RW
+*******************************************************************************/
+typedef enum {
+    LSM303AGR_MAG_REBOOT_DISABLED 		 =0x00,
+    LSM303AGR_MAG_REBOOT_ENABLED 		 =0x40,
+} LSM303AGR_MAG_REBOOT_t;
+
+#define  	LSM303AGR_MAG_REBOOT_MASK  	0x40
+mems_status_t  LSM303AGR_MAG_W_REBOOT(void *handle, LSM303AGR_MAG_REBOOT_t newValue);
+mems_status_t LSM303AGR_MAG_R_REBOOT(void *handle, LSM303AGR_MAG_REBOOT_t *value);
+
+/*******************************************************************************
+* Register      : CFG_REG_A
+* Address       : 0X60
+* Bit Group Name: COMP_TEMP
+* Permission    : RW
+*******************************************************************************/
+typedef enum {
+    LSM303AGR_MAG_COMP_TEMP_DISABLED 		 =0x00,
+    LSM303AGR_MAG_COMP_TEMP_ENABLED 		 =0x80,
+} LSM303AGR_MAG_COMP_TEMP_t;
+
+#define  	LSM303AGR_MAG_COMP_TEMP_MASK  	0x80
+mems_status_t  LSM303AGR_MAG_W_COMP_TEMP(void *handle, LSM303AGR_MAG_COMP_TEMP_t newValue);
+mems_status_t LSM303AGR_MAG_R_COMP_TEMP(void *handle, LSM303AGR_MAG_COMP_TEMP_t *value);
+
+/*******************************************************************************
 * Register      : CFG_REG_B
 * Address       : 0X61
 * Bit Group Name: LPF

@@ -628,6 +628,91 @@ mems_status_t LSM303AGR_MAG_R_SOFT_RST(void *handle, LSM303AGR_MAG_SOFT_RST_t *v
 
   return MEMS_SUCCESS;
 }
+
+/*******************************************************************************
+* Function Name  : LSM303AGR_MAG_W_REBOOT
+* Description    : Write REBOOT
+* Input          : LSM303AGR_MAG_REBOOT_t
+* Output         : None
+* Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
+*******************************************************************************/
+mems_status_t  LSM303AGR_MAG_W_REBOOT(void *handle, LSM303AGR_MAG_REBOOT_t newValue)
+{
+  u8_t value;
+
+  if( !LSM303AGR_MAG_ReadReg(handle, LSM303AGR_MAG_CFG_REG_A, &value) )
+    return MEMS_ERROR;
+
+  value &= ~LSM303AGR_MAG_REBOOT_MASK;
+  value |= newValue;
+
+  if( !LSM303AGR_MAG_WriteReg(handle, LSM303AGR_MAG_CFG_REG_A, value) )
+    return MEMS_ERROR;
+
+  return MEMS_SUCCESS;
+}
+
+/*******************************************************************************
+* Function Name  : LSM303AGR_MAG_R_REBOOT
+* Description    : Read REBOOT
+* Input          : Pointer to LSM303AGR_MAG_REBOOT_t
+* Output         : Status of REBOOT see LSM303AGR_MAG_REBOOT_t
+* Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
+*******************************************************************************/
+
+mems_status_t LSM303AGR_MAG_R_REBOOT(void *handle, LSM303AGR_MAG_REBOOT_t *value)
+{
+ if( !LSM303AGR_MAG_ReadReg(handle, LSM303AGR_MAG_CFG_REG_A, (u8_t *)value) )
+    return MEMS_ERROR;
+
+  const uint8_t tmp = *value & LSM303AGR_MAG_REBOOT_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
+
+  return MEMS_SUCCESS;
+}
+
+/*******************************************************************************
+* Function Name  : LSM303AGR_MAG_W_COMP_TEMP
+* Description    : Write COMP_TEMP
+* Input          : LSM303AGR_MAG_COMP_TEMP_t
+* Output         : None
+* Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
+*******************************************************************************/
+mems_status_t  LSM303AGR_MAG_W_COMP_TEMP(void *handle, LSM303AGR_MAG_COMP_TEMP_t newValue)
+{
+  u8_t value;
+
+  if( !LSM303AGR_MAG_ReadReg(handle, LSM303AGR_MAG_CFG_REG_A, &value) )
+    return MEMS_ERROR;
+
+  value &= ~LSM303AGR_MAG_COMP_TEMP_MASK;
+  value |= newValue;
+
+  if( !LSM303AGR_MAG_WriteReg(handle, LSM303AGR_MAG_CFG_REG_A, value) )
+    return MEMS_ERROR;
+
+  return MEMS_SUCCESS;
+}
+
+/*******************************************************************************
+* Function Name  : LSM303AGR_MAG_R_COMP_TEMP
+* Description    : Read COMP_TEMP
+* Input          : Pointer to LSM303AGR_MAG_COMP_TEMP_t
+* Output         : Status of COMP_TEMP see LSM303AGR_MAG_COMP_TEMP_t
+* Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
+*******************************************************************************/
+
+mems_status_t LSM303AGR_MAG_R_COMP_TEMP(void *handle, LSM303AGR_MAG_COMP_TEMP_t *value)
+{
+ if( !LSM303AGR_MAG_ReadReg(handle, LSM303AGR_MAG_CFG_REG_A, (u8_t *)value) )
+    return MEMS_ERROR;
+
+  const uint8_t tmp = *value & LSM303AGR_MAG_COMP_TEMP_MASK; //mask
+  memcpy(value, &tmp, sizeof (tmp));
+
+  return MEMS_SUCCESS;
+}
+
 /*******************************************************************************
 * Function Name  : LSM303AGR_MAG_W_LPF
 * Description    : Write LPF
