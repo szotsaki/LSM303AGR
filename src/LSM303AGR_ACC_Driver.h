@@ -1595,6 +1595,13 @@ mems_status_t LSM303AGR_ACC_Get_Voltage_ADC(void *handle, u8_t *buff);
 * Permission    : RO
 *******************************************************************************/
 mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, u8_t *buff);
+
+enum LSM303AGR_ACC_PRECISION_t : u8_t {
+    LSM303AGR_ACC_PRECISION_LOW_POWER = 8,
+    LSM303AGR_ACC_PRECISION_NORMAL    = 10,
+    LSM303AGR_ACC_PRECISION_HI_RES    = 12,
+};
+mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, i16_t *buff[3], const LSM303AGR_ACC_PRECISION_t precision);
 mems_status_t LSM303AGR_ACC_Get_Acceleration(void *handle, int *buff);
 
 #endif

@@ -1601,6 +1601,25 @@ mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, u8_t *buff)
   return MEMS_SUCCESS;
 }
 
+mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, i16_t *buff[])
+{
+  for (u8_t i = 0; i < 3; i++) {
+      u8_t low = 0;
+      u8_t high = 0;
+
+      if (!LSM303AGR_MAG_ReadReg(handle, LSM303AGR_MAG_OUTX_L_REG + (i * 2), &low)) {
+          return MEMS_ERROR;
+      }
+      if (!LSM303AGR_MAG_ReadReg(handle, LSM303AGR_MAG_OUTX_L_REG + (i * 2) + 1, &high)) {
+          return MEMS_ERROR;
+      }
+
+      *buff[i] = (high << 8u) | low;
+  }
+
+  return MEMS_SUCCESS;
+}
+
 #define LSM303AGR_MAG_SENSITIVITY	15/10
 
 mems_status_t LSM303AGR_MAG_Get_Magnetic(void *handle, int *buff)

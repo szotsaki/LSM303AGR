@@ -3951,6 +3951,33 @@ mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, u8_t *buff)
   return MEMS_SUCCESS;
 }
 
+
+/*******************************************************************************
+* Function Name  : mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, i16_t *buff[3], const LSM303AGR_ACC_PRECISION_t precision)
+* Description    : Read Acceleration output register
+* Input          : pointer to i16_t buff[3]
+* Output         : Acceleration buffer i16_t
+* Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
+*******************************************************************************/
+mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, i16_t *buff[3], const LSM303AGR_ACC_PRECISION_t precision)
+{
+  for (u8_t i = 0; i < 3; i++) {
+      u8_t low = 0;
+      u8_t high = 0;
+
+      if (!LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_OUT_X_L + (i * 2), &low)) {
+          return MEMS_ERROR;
+      }
+      if (!LSM303AGR_ACC_ReadReg(handle, LSM303AGR_ACC_OUT_X_L + (i * 2) + 1, &high)) {
+          return MEMS_ERROR;
+      }
+
+      *buff[i] = ((high << 8u) | low) / (1u << (16u - precision));
+  }
+
+  return MEMS_SUCCESS;
+}
+
 /*
  * Following is the table of sensitivity values for each case.
  * Values are espressed in ug/digit.

@@ -745,6 +745,7 @@ mems_status_t LSM303AGR_MAG_R_ZYXOR(void *handle, LSM303AGR_MAG_ZYXOR_t *value);
 * Permission    : ro
 *******************************************************************************/
 mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, u8_t *buff);
+mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, i16_t *buff[3]);
 mems_status_t LSM303AGR_MAG_Get_Magnetic(void *handle, int *buff);
 
 /*******************************************************************************
