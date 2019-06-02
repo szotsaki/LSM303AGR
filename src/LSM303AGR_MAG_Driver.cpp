@@ -39,10 +39,7 @@
 #include <string.h>
 
 #include "LSM303AGR_MAG_Driver.h"
-
-/* Imported function prototypes ----------------------------------------------*/
-extern uint8_t LSM303AGR_MAG_IO_Write(void *handle, uint8_t WriteAddr, uint8_t *pBuffer, uint16_t nBytesToWrite);
-extern uint8_t LSM303AGR_MAG_IO_Read(void *handle, uint8_t ReadAddr, uint8_t *pBuffer, uint16_t nBytesToRead);
+#include "LSM303AGR_I2C.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -64,9 +61,11 @@ extern uint8_t LSM303AGR_MAG_IO_Read(void *handle, uint8_t ReadAddr, uint8_t *pB
 *******************************************************************************/
 mems_status_t LSM303AGR_MAG_ReadReg( void *handle, u8_t Reg, u8_t* Data )
 {
-
-  if (LSM303AGR_MAG_IO_Read(handle, Reg, Data, 1))
+  const LSM303AGR_I2C *convHandle = static_cast<LSM303AGR_I2C*>(handle);
+  u8_t err;
+  if ((err = convHandle->readFunction(LSM303AGR_MAG_I2C_ADDRESS, Reg, Data, 1)))
   {
+    convHandle->errorPrinterFunction(err);
     return MEMS_ERROR;
   }
   else
@@ -85,9 +84,11 @@ mems_status_t LSM303AGR_MAG_ReadReg( void *handle, u8_t Reg, u8_t* Data )
 *******************************************************************************/
 mems_status_t LSM303AGR_MAG_WriteReg( void *handle, u8_t Reg, u8_t Data )
 {
-
-  if (LSM303AGR_MAG_IO_Write(handle, Reg, &Data, 1))
+  const LSM303AGR_I2C *convHandle = static_cast<LSM303AGR_I2C*>(handle);
+  u8_t err;
+  if ((err = convHandle->writeFunction(LSM303AGR_MAG_I2C_ADDRESS, Reg, &Data, 1)))
   {
+    convHandle->errorPrinterFunction(err);
     return MEMS_ERROR;
   }
   else
