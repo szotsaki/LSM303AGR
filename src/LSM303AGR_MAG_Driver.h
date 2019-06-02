@@ -44,10 +44,6 @@
 
 /* Exported types ------------------------------------------------------------*/
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //these could change accordingly with the architecture
 
 #ifndef __ARCHDEP__TYPES
@@ -758,9 +754,5 @@ mems_status_t LSM303AGR_MAG_Get_Magnetic(void *handle, int *buff);
 *******************************************************************************/
 mems_status_t LSM303AGR_MAG_Get_IntThreshld(void *handle, u8_t *buff); 
 mems_status_t LSM303AGR_MAG_Set_IntThreshld(void *handle, u8_t *buff);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

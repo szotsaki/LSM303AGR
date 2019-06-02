@@ -44,10 +44,6 @@
 
 /* Exported types ------------------------------------------------------------*/
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //these could change accordingly with the architecture
 
 #ifndef __ARCHDEP__TYPES
@@ -1600,9 +1596,5 @@ mems_status_t LSM303AGR_ACC_Get_Voltage_ADC(void *handle, u8_t *buff);
 *******************************************************************************/
 mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, u8_t *buff); 
 mems_status_t LSM303AGR_ACC_Get_Acceleration(void *handle, int *buff);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

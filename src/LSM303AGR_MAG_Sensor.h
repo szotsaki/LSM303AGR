@@ -134,13 +134,7 @@ class LSM303AGR_MAG_Sensor
     uint8_t address;
 };
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 uint8_t LSM303AGR_MAG_IO_Write( void *handle, uint8_t WriteAddr, uint8_t *pBuffer, uint16_t nBytesToWrite );
 uint8_t LSM303AGR_MAG_IO_Read( void *handle, uint8_t ReadAddr, uint8_t *pBuffer, uint16_t nBytesToRead );
-#ifdef __cplusplus
-}
-#endif
 
 #endif
