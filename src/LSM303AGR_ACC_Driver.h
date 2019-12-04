@@ -91,7 +91,7 @@ typedef enum {
 
 /************** I2C Address *****************/
 
-#define LSM303AGR_ACC_I2C_ADDRESS         0x32
+#define LSM303AGR_ACC_I2C_ADDRESS         0x19
 
 /************** Who am I  *******************/
 
