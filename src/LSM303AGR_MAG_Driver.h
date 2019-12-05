@@ -78,7 +78,7 @@ typedef union{
 	u8_t u8bit[4];
 } Type1Axis32bit_U;
 
-typedef enum {
+typedef enum : u8_t {
   MEMS_SUCCESS = 0x01,
   MEMS_ERROR   = 0x00
 } mems_status_t;
@@ -218,7 +218,7 @@ mems_status_t LSM303AGR_MAG_R_WHO_AM_I(void *handle, u8_t *value);
 * Bit Group Name: MD
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_MD_CONTINUOS_MODE 		 =0x00,
   	LSM303AGR_MAG_MD_SINGLE_MODE 		 =0x01,
   	LSM303AGR_MAG_MD_IDLE1_MODE 		 =0x02,
@@ -235,7 +235,7 @@ mems_status_t LSM303AGR_MAG_R_MD(void *handle, LSM303AGR_MAG_MD_t *value);
 * Bit Group Name: ODR
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_ODR_10Hz 		 =0x00,
   	LSM303AGR_MAG_ODR_20Hz 		 =0x04,
   	LSM303AGR_MAG_ODR_50Hz 		 =0x08,
@@ -252,7 +252,7 @@ mems_status_t LSM303AGR_MAG_R_ODR(void *handle, LSM303AGR_MAG_ODR_t *value);
 * Bit Group Name: LP
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_HR_MODE 		 =0x00,
   	LSM303AGR_MAG_LP_MODE 		 =0x10,
 } LSM303AGR_MAG_LP_t;
@@ -267,7 +267,7 @@ mems_status_t LSM303AGR_MAG_R_LP(void *handle, LSM303AGR_MAG_LP_t *value);
 * Bit Group Name: SOFT_RST
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_SOFT_RST_DISABLED 		 =0x00,
   	LSM303AGR_MAG_SOFT_RST_ENABLED 		 =0x20,
 } LSM303AGR_MAG_SOFT_RST_t;
@@ -282,7 +282,7 @@ mems_status_t LSM303AGR_MAG_R_SOFT_RST(void *handle, LSM303AGR_MAG_SOFT_RST_t *v
 * Bit Group Name: REBOOT
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
     LSM303AGR_MAG_REBOOT_DISABLED 		 =0x00,
     LSM303AGR_MAG_REBOOT_ENABLED 		 =0x40,
 } LSM303AGR_MAG_REBOOT_t;
@@ -297,7 +297,7 @@ mems_status_t LSM303AGR_MAG_R_REBOOT(void *handle, LSM303AGR_MAG_REBOOT_t *value
 * Bit Group Name: COMP_TEMP
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
     LSM303AGR_MAG_COMP_TEMP_DISABLED 		 =0x00,
     LSM303AGR_MAG_COMP_TEMP_ENABLED 		 =0x80,
 } LSM303AGR_MAG_COMP_TEMP_t;
@@ -312,7 +312,7 @@ mems_status_t LSM303AGR_MAG_R_COMP_TEMP(void *handle, LSM303AGR_MAG_COMP_TEMP_t 
 * Bit Group Name: LPF
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_LPF_DISABLED 		 =0x00,
   	LSM303AGR_MAG_LPF_ENABLED 		 =0x01,
 } LSM303AGR_MAG_LPF_t;
@@ -327,7 +327,7 @@ mems_status_t LSM303AGR_MAG_R_LPF(void *handle, LSM303AGR_MAG_LPF_t *value);
 * Bit Group Name: OFF_CANC
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_OFF_CANC_DISABLED 		 =0x00,
   	LSM303AGR_MAG_OFF_CANC_ENABLED 		 =0x02,
 } LSM303AGR_MAG_OFF_CANC_t;
@@ -342,7 +342,7 @@ mems_status_t LSM303AGR_MAG_R_OFF_CANC(void *handle, LSM303AGR_MAG_OFF_CANC_t *v
 * Bit Group Name: SET_FREQ
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_SET_FREQ_CONTINUOS 		 =0x00,
   	LSM303AGR_MAG_SET_FREQ_SINGLE 		 =0x04,
 } LSM303AGR_MAG_SET_FREQ_t;
@@ -357,7 +357,7 @@ mems_status_t LSM303AGR_MAG_R_SET_FREQ(void *handle, LSM303AGR_MAG_SET_FREQ_t *v
 * Bit Group Name: INT_ON_DATAOFF
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_INT_ON_DATAOFF_DISABLED 		 =0x00,
   	LSM303AGR_MAG_INT_ON_DATAOFF_ENABLED 		 =0x08,
 } LSM303AGR_MAG_INT_ON_DATAOFF_t;
@@ -372,7 +372,7 @@ mems_status_t LSM303AGR_MAG_R_INT_ON_DATAOFF(void *handle, LSM303AGR_MAG_INT_ON_
 * Bit Group Name: INT_MAG
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_INT_MAG_DISABLED 		 =0x00,
   	LSM303AGR_MAG_INT_MAG_ENABLED 		 =0x01,
 } LSM303AGR_MAG_INT_MAG_t;
@@ -387,7 +387,7 @@ mems_status_t LSM303AGR_MAG_R_INT_MAG(void *handle, LSM303AGR_MAG_INT_MAG_t *val
 * Bit Group Name: ST
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_ST_DISABLED 		 =0x00,
   	LSM303AGR_MAG_ST_ENABLED 		 =0x02,
 } LSM303AGR_MAG_ST_t;
@@ -402,7 +402,7 @@ mems_status_t LSM303AGR_MAG_R_ST(void *handle, LSM303AGR_MAG_ST_t *value);
 * Bit Group Name: BLE
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_BLE_DISABLED 		 =0x00,
   	LSM303AGR_MAG_BLE_ENABLED 		 =0x08,
 } LSM303AGR_MAG_BLE_t;
@@ -417,7 +417,7 @@ mems_status_t LSM303AGR_MAG_R_BLE(void *handle, LSM303AGR_MAG_BLE_t *value);
 * Bit Group Name: BDU
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_BDU_DISABLED 		 =0x00,
   	LSM303AGR_MAG_BDU_ENABLED 		 =0x10,
 } LSM303AGR_MAG_BDU_t;
@@ -432,7 +432,7 @@ mems_status_t LSM303AGR_MAG_R_BDU(void *handle, LSM303AGR_MAG_BDU_t *value);
 * Bit Group Name: I2C_DIS
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_I2C_ENABLED 		 =0x00,
   	LSM303AGR_MAG_I2C_DISABLED 		 =0x20,
 } LSM303AGR_MAG_I2C_DIS_t;
@@ -447,7 +447,7 @@ mems_status_t LSM303AGR_MAG_R_I2C_DIS(void *handle, LSM303AGR_MAG_I2C_DIS_t *val
 * Bit Group Name: INT_MAG_PIN
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_INT_MAG_PIN_DISABLED 		 =0x00,
   	LSM303AGR_MAG_INT_MAG_PIN_ENABLED 		 =0x40,
 } LSM303AGR_MAG_INT_MAG_PIN_t;
@@ -462,7 +462,7 @@ mems_status_t LSM303AGR_MAG_R_INT_MAG_PIN(void *handle, LSM303AGR_MAG_INT_MAG_PI
 * Bit Group Name: IEN
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_IEN_DISABLED 		 =0x00,
   	LSM303AGR_MAG_IEN_ENABLED 		 =0x01,
 } LSM303AGR_MAG_IEN_t;
@@ -477,7 +477,7 @@ mems_status_t LSM303AGR_MAG_R_IEN(void *handle, LSM303AGR_MAG_IEN_t *value);
 * Bit Group Name: IEL
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_IEL_PULSED 		 =0x00,
   	LSM303AGR_MAG_IEL_LATCHED 		 =0x02,
 } LSM303AGR_MAG_IEL_t;
@@ -492,7 +492,7 @@ mems_status_t LSM303AGR_MAG_R_IEL(void *handle, LSM303AGR_MAG_IEL_t *value);
 * Bit Group Name: IEA
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_IEA_ACTIVE_LO 		 =0x00,
   	LSM303AGR_MAG_IEA_ACTIVE_HI 		 =0x04,
 } LSM303AGR_MAG_IEA_t;
@@ -507,7 +507,7 @@ mems_status_t LSM303AGR_MAG_R_IEA(void *handle, LSM303AGR_MAG_IEA_t *value);
 * Bit Group Name: ZIEN
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_ZIEN_DISABLED 		 =0x00,
   	LSM303AGR_MAG_ZIEN_ENABLED 		 =0x20,
 } LSM303AGR_MAG_ZIEN_t;
@@ -522,7 +522,7 @@ mems_status_t LSM303AGR_MAG_R_ZIEN(void *handle, LSM303AGR_MAG_ZIEN_t *value);
 * Bit Group Name: YIEN
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_YIEN_DISABLED 		 =0x00,
   	LSM303AGR_MAG_YIEN_ENABLED 		 =0x40,
 } LSM303AGR_MAG_YIEN_t;
@@ -537,7 +537,7 @@ mems_status_t LSM303AGR_MAG_R_YIEN(void *handle, LSM303AGR_MAG_YIEN_t *value);
 * Bit Group Name: XIEN
 * Permission    : RW
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_XIEN_DISABLED 		 =0x00,
   	LSM303AGR_MAG_XIEN_ENABLED 		 =0x80,
 } LSM303AGR_MAG_XIEN_t;
@@ -552,7 +552,7 @@ mems_status_t LSM303AGR_MAG_R_XIEN(void *handle, LSM303AGR_MAG_XIEN_t *value);
 * Bit Group Name: INT
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_INT_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_INT_EV_ON 		 =0x01,
 } LSM303AGR_MAG_INT_t;
@@ -566,7 +566,7 @@ mems_status_t LSM303AGR_MAG_R_INT(void *handle, LSM303AGR_MAG_INT_t *value);
 * Bit Group Name: MROI
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_MROI_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_MROI_EV_ON 		 =0x02,
 } LSM303AGR_MAG_MROI_t;
@@ -580,7 +580,7 @@ mems_status_t LSM303AGR_MAG_R_MROI(void *handle, LSM303AGR_MAG_MROI_t *value);
 * Bit Group Name: N_TH_S_Z
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_N_TH_S_Z_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_N_TH_S_Z_EV_ON 		 =0x04,
 } LSM303AGR_MAG_N_TH_S_Z_t;
@@ -594,7 +594,7 @@ mems_status_t LSM303AGR_MAG_R_N_TH_S_Z(void *handle, LSM303AGR_MAG_N_TH_S_Z_t *v
 * Bit Group Name: N_TH_S_Y
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_N_TH_S_Y_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_N_TH_S_Y_EV_ON 		 =0x08,
 } LSM303AGR_MAG_N_TH_S_Y_t;
@@ -608,7 +608,7 @@ mems_status_t LSM303AGR_MAG_R_N_TH_S_Y(void *handle, LSM303AGR_MAG_N_TH_S_Y_t *v
 * Bit Group Name: N_TH_S_X
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_N_TH_S_X_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_N_TH_S_X_EV_ON 		 =0x10,
 } LSM303AGR_MAG_N_TH_S_X_t;
@@ -622,7 +622,7 @@ mems_status_t LSM303AGR_MAG_R_N_TH_S_X(void *handle, LSM303AGR_MAG_N_TH_S_X_t *v
 * Bit Group Name: P_TH_S_Z
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_P_TH_S_Z_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_P_TH_S_Z_EV_ON 		 =0x20,
 } LSM303AGR_MAG_P_TH_S_Z_t;
@@ -636,7 +636,7 @@ mems_status_t LSM303AGR_MAG_R_P_TH_S_Z(void *handle, LSM303AGR_MAG_P_TH_S_Z_t *v
 * Bit Group Name: P_TH_S_Y
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_P_TH_S_Y_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_P_TH_S_Y_EV_ON 		 =0x40,
 } LSM303AGR_MAG_P_TH_S_Y_t;
@@ -650,7 +650,7 @@ mems_status_t LSM303AGR_MAG_R_P_TH_S_Y(void *handle, LSM303AGR_MAG_P_TH_S_Y_t *v
 * Bit Group Name: P_TH_S_X
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_P_TH_S_X_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_P_TH_S_X_EV_ON 		 =0x80,
 } LSM303AGR_MAG_P_TH_S_X_t;
@@ -664,7 +664,7 @@ mems_status_t LSM303AGR_MAG_R_P_TH_S_X(void *handle, LSM303AGR_MAG_P_TH_S_X_t *v
 * Bit Group Name: XDA
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_XDA_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_XDA_EV_ON 		 =0x01,
 } LSM303AGR_MAG_XDA_t;
@@ -678,7 +678,7 @@ mems_status_t LSM303AGR_MAG_R_XDA(void *handle, LSM303AGR_MAG_XDA_t *value);
 * Bit Group Name: YDA
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_YDA_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_YDA_EV_ON 		 =0x02,
 } LSM303AGR_MAG_YDA_t;
@@ -692,7 +692,7 @@ mems_status_t LSM303AGR_MAG_R_YDA(void *handle, LSM303AGR_MAG_YDA_t *value);
 * Bit Group Name: ZDA
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_ZDA_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_ZDA_EV_ON 		 =0x04,
 } LSM303AGR_MAG_ZDA_t;
@@ -706,7 +706,7 @@ mems_status_t LSM303AGR_MAG_R_ZDA(void *handle, LSM303AGR_MAG_ZDA_t *value);
 * Bit Group Name: ZYXDA
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_ZYXDA_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_ZYXDA_EV_ON 		 =0x08,
 } LSM303AGR_MAG_ZYXDA_t;
@@ -720,7 +720,7 @@ mems_status_t LSM303AGR_MAG_R_ZYXDA(void *handle, LSM303AGR_MAG_ZYXDA_t *value);
 * Bit Group Name: XOR
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_XOR_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_XOR_EV_ON 		 =0x10,
 } LSM303AGR_MAG_XOR_t;
@@ -734,7 +734,7 @@ mems_status_t LSM303AGR_MAG_R_XOR(void *handle, LSM303AGR_MAG_XOR_t *value);
 * Bit Group Name: YOR
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_YOR_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_YOR_EV_ON 		 =0x20,
 } LSM303AGR_MAG_YOR_t;
@@ -748,7 +748,7 @@ mems_status_t LSM303AGR_MAG_R_YOR(void *handle, LSM303AGR_MAG_YOR_t *value);
 * Bit Group Name: ZOR
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_ZOR_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_ZOR_EV_ON 		 =0x40,
 } LSM303AGR_MAG_ZOR_t;
@@ -762,7 +762,7 @@ mems_status_t LSM303AGR_MAG_R_ZOR(void *handle, LSM303AGR_MAG_ZOR_t *value);
 * Bit Group Name: ZYXOR
 * Permission    : RO
 *******************************************************************************/
-typedef enum {
+typedef enum : u8_t {
   	LSM303AGR_MAG_ZYXOR_EV_OFF 		 =0x00,
   	LSM303AGR_MAG_ZYXOR_EV_ON 		 =0x80,
 } LSM303AGR_MAG_ZYXOR_t;
