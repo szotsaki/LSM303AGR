@@ -3975,7 +3975,7 @@ mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, i16_t *buff[3], c
           return MEMS_ERROR;
       }
 
-      *buff[i] = ((high << 8u) | low) / (1u << (16u - precision));
+      *buff[i] = static_cast<int16_t>((high << 8u) | low) / static_cast<int16_t>(1u << (16u - precision));
   }
 
   return MEMS_SUCCESS;

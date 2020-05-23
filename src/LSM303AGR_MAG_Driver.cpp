@@ -1687,7 +1687,7 @@ mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, u8_t *buff)
   return MEMS_SUCCESS;
 }
 
-mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, i16_t *buff[])
+mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, i16_t *buff[3])
 {
   for (u8_t i = 0; i < 3; i++) {
       u8_t low = 0;
@@ -1700,7 +1700,7 @@ mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, i16_t *buff[])
           return MEMS_ERROR;
       }
 
-      *buff[i] = (high << 8u) | low;
+      *buff[i] = static_cast<int16_t>((high << 8u) | low);
   }
 
   return MEMS_SUCCESS;
