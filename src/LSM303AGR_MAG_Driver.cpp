@@ -129,6 +129,20 @@ void LSM303AGR_MAG_SwapHighLowByte(u8_t *bufferToSwap, u8_t numberOfByte, u8_t d
 
 /* Exported functions ---------------------------------------------------------*/
 
+mems_status_t LSM303AGR_MAG_Write_Raw_Magnetic_Offset(void *handle, i16_t * const buff[3])
+{
+    for (u8_t i = 0; i < 3; i++) {
+        if (!LSM303AGR_MAG_WriteReg(handle, LSM303AGR_MAG_OFFSET_X_REG_L + (i * 2), (*buff[i]) & 0xFF)) {
+            return MEMS_ERROR;
+        }
+        if (!LSM303AGR_MAG_WriteReg(handle, LSM303AGR_MAG_OFFSET_X_REG_L + (i * 2) + 1, (*buff[i]) >> 8)) {
+            return MEMS_ERROR;
+        }
+    }
+
+    return MEMS_SUCCESS;
+}
+
 /*******************************************************************************
 * Function Name  : LSM303AGR_MAG_W_OFF_X_L
 * Description    : Write OFF_X_L

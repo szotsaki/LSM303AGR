@@ -130,6 +130,8 @@ mems_status_t LSM303AGR_MAG_WriteReg( void *handle, u8_t Reg, u8_t Data );
 #define LSM303AGR_MAG_OUTZ_L_REG  	0X6C
 #define LSM303AGR_MAG_OUTZ_H_REG  	0X6D
 
+mems_status_t LSM303AGR_MAG_Write_Raw_Magnetic_Offset(void *handle, i16_t * const buff[3]);
+
 /*******************************************************************************
 * Register      : OFFSET_X_REG_L
 * Address       : 0X45
