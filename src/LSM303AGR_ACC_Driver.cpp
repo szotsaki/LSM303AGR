@@ -3962,6 +3962,7 @@ mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, u8_t *buff)
 * Output         : Acceleration buffer i16_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
+
 mems_status_t LSM303AGR_ACC_Get_Raw_Acceleration(void *handle, i16_t *buff[3], const LSM303AGR_ACC_PRECISION_t precision)
 {
   for (u8_t i = 0; i < 3; i++) {

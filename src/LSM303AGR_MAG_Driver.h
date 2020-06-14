@@ -769,13 +769,18 @@ typedef enum : u8_t {
 
 #define  	LSM303AGR_MAG_ZYXOR_MASK  	0x80
 mems_status_t LSM303AGR_MAG_R_ZYXOR(void *handle, LSM303AGR_MAG_ZYXOR_t *value);
+
 /*******************************************************************************
 * Register      : <REGISTER_L> - <REGISTER_H>
 * Output Type   : Magnetic
 * Permission    : ro
 *******************************************************************************/
+enum class LSM303AGR_MAG_MAGNETIC_TYPE : u8_t {
+    Raw_Magnetism,
+    Raw_Magnetic_Offset
+};
 mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, u8_t *buff);
-mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, i16_t *buff[3]);
+mems_status_t LSM303AGR_MAG_Get_Raw_Magnetic(void *handle, i16_t *buff[3], LSM303AGR_MAG_MAGNETIC_TYPE type);
 mems_status_t LSM303AGR_MAG_Get_Magnetic(void *handle, int *buff);
 
 /*******************************************************************************
